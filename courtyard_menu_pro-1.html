@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Courtyard — Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Tenor+Sans&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:       #0e0c08;
+  --ink2:      #1c1912;
+  --ink3:      #2e2a20;
+  --gold:      #b8975a;
+  --gold2:     #d4b07a;
+  --gold-pale: #f0e6cc;
+  --ivory:     #faf7f0;
+  --ivory2:    #f3ede0;
+  --parchment: #ece4d0;
+  --text:      #2a2418;
+  --muted:     #6b6050;
+  --faint:     #9e9282;
+  --veg:       #2e6b35;
+  --nonveg:    #9b2424;
+  --rule:      rgba(184,151,90,0.2);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--ivory);
+  color: var(--text);
+  font-family: 'Tenor Sans', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--ivory2); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* ══════════════════════════════
+   COVER / HERO
+══════════════════════════════ */
+.cover {
+  background: var(--ink);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 60px 32px;
+}
+
+/* Decorative geometric background */
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 40%, rgba(184,151,90,0.10) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 60% at 15% 80%, rgba(184,151,90,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 40% at 85% 20%, rgba(184,151,90,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Fine grid texture */
+.cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(184,151,90,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184,151,90,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+.cover-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  animation: fadeUp 1.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cover-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.cover-eyebrow-line {
+  width: 48px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+.cover-eyebrow-line:last-child {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+.cover-eyebrow-text {
+  font-family: 'Tenor Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold2);
+}
+
+.cover-name {
+  font-family: 'Cormorant', serif;
+  font-weight: 300;
+  font-size: clamp(72px, 18vw, 130px);
+  color: #fff;
+  line-height: 0.9;
+  letter-spacing: -1px;
+}
+.cover-name em {
+  font-style: italic;
+  color: var(--gold2);
+  font-weight: 300;
+}
+
+.cover-rule {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 28px auto;
+  width: fit-content;
+}
+.cover-rule-line {
+  width: 80px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+.cover-rule-line:last-child {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+.cover-rule-diamond {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.cover-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 2px;
+}
+
+.cover-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: fadeUp 1.4s 0.3s cubic-bezier(0.16,1,0.3,1) both;
+}
+.cover-scroll-text {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+}
+.cover-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  animation: scrollPulse 2s infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.2); }
+}
+
+/* ══════════════════════════════
+   STICKY NAV
+══════════════════════════════ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(14,12,8,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(184,151,90,0.15);
+}
+.nav-scroll {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-scroll::-webkit-scrollbar { display: none; }
+.nav-list {
+  display: flex;
+  align-items: center;
+  min-width: max-content;
+  padding: 0 20px;
+  gap: 2px;
+}
+.nav-list a {
+  display: block;
+  padding: 16px 16px;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.2s;
+}
+.nav-list a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 16px; right: 16px;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
+}
+.nav-list a:hover { color: var(--gold2); }
+.nav-list a:hover::after { transform: scaleX(1); }
+.nav-list a.active { color: var(--gold2); }
+.nav-list a.active::after { transform: scaleX(1); }
+
+/* ══════════════════════════════
+   LEGEND BAR
+══════════════════════════════ */
+.legend-bar {
+  background: var(--ink2);
+  padding: 12px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+.legend-mark {
+  width: 14px; height: 14px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.legend-mark.veg {
+  border: 1.5px solid var(--veg);
+}
+.legend-mark.veg::after {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--veg);
+}
+.legend-mark.nonveg {
+  border: 1.5px solid var(--nonveg);
+}
+.legend-mark.nonveg::after {
+  content: '';
+  width: 0; height: 0;
+  border-left: 3.5px solid transparent;
+  border-right: 3.5px solid transparent;
+  border-bottom: 6px solid var(--nonveg);
+}
+
+/* ══════════════════════════════
+   PAGE WRAPPER
+══════════════════════════════ */
+.page { max-width: 740px; margin: 0 auto; padding: 0 0 80px; }
+
+/* ══════════════════════════════
+   SECTION
+══════════════════════════════ */
+.section {
+  padding: 70px 28px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-head {
+  text-align: center;
+  padding-bottom: 40px;
+  position: relative;
+}
+.section-head::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  margin: 24px auto 0;
+}
+
+.section-number {
+  font-family: 'Cormorant', serif;
+  font-weight: 300;
+  font-size: 80px;
+  color: var(--parchment);
+  line-height: 1;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.section-label {
+  font-size: 9px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-family: 'Cormorant', serif;
+  font-weight: 500;
+  font-size: clamp(32px, 6vw, 46px);
+  color: var(--ink);
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.5px;
+}
+
+.section-hours {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--faint);
+  margin-top: 6px;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 1px;
+}
+
+/* ── ORNAMENT ── */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 24px 0 0;
+  justify-content: center;
+}
+.ornament-line {
+  flex: 1; max-width: 60px; height: 1px;
+  background: var(--gold);
+  opacity: 0.35;
+}
+.ornament-diamond {
+  width: 5px; height: 5px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  opacity: 0.6;
+}
+
+/* ══════════════════════════════
+   SUBSECTION
+══════════════════════════════ */
+.subsection {
+  margin: 44px 0 0;
+}
+.subsection-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+.subsection-label::before,
+.subsection-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+.subsection-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--muted);
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+/* ══════════════════════════════
+   MENU ITEM
+══════════════════════════════ */
+.items { margin-top: 8px; }
+
+.item {
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  gap: 0 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+  transition: background 0.15s;
+  position: relative;
+}
+.item:last-child { border-bottom: none; }
+
+/* hover shimmer */
+.item::before {
+  content: '';
+  position: absolute;
+  inset: 0 -28px;
+  background: linear-gradient(90deg, transparent, rgba(184,151,90,0.04), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.item:hover::before { opacity: 1; }
+
+.item-dot {
+  width: 14px; height: 14px;
+  border-radius: 2px;
+  margin-top: 4px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.item-dot.veg   { border: 1.5px solid var(--veg); }
+.item-dot.nonveg { border: 1.5px solid var(--nonveg); }
+.item-dot.veg::after {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--veg);
+}
+.item-dot.nonveg::after {
+  content: '';
+  width: 0; height: 0;
+  border-left: 3.5px solid transparent;
+  border-right: 3.5px solid transparent;
+  border-bottom: 6px solid var(--nonveg);
+}
+
+.item-body { min-width: 0; }
+
+.item-name {
+  font-family: 'Cormorant', serif;
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+}
+.item-name .variant {
+  font-family: 'Tenor Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--faint);
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.item-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.item-price {
+  font-family: 'Cormorant', serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+  padding-top: 2px;
+  letter-spacing: 0.5px;
+}
+.item-price::before {
+  content: '₹';
+  font-size: 11px;
+  vertical-align: top;
+  margin-top: 4px;
+  display: inline-block;
+  color: var(--gold);
+  margin-right: 1px;
+}
+
+/* price slash for dual pricing */
+.item-price .slash {
+  color: var(--faint);
+  font-size: 12px;
+  margin: 0 2px;
+}
+
+/* ══════════════════════════════
+   DIVIDER BETWEEN SECTIONS
+══════════════════════════════ */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 64px 28px 0;
+  max-width: 740px;
+  margin: 0 auto;
+}
+.section-divider-line {
+  flex: 1; height: 1px;
+  background: var(--rule);
+}
+.section-divider-motif {
+  display: flex; gap: 6px; align-items: center;
+}
+.section-divider-motif span {
+  width: 4px; height: 4px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  opacity: 0.4;
+}
+.section-divider-motif span:nth-child(2) {
+  opacity: 0.8;
+  width: 5px; height: 5px;
+}
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+.footer {
+  background: var(--ink);
+  margin-top: 80px;
+  padding: 60px 28px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(184,151,90,0.1), transparent 70%);
+  pointer-events: none;
+}
+.footer-rule {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.footer-rule-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184,151,90,0.3));
+}
+.footer-rule-line:last-child {
+  background: linear-gradient(90deg, rgba(184,151,90,0.3), transparent);
+}
+.footer-rule-diamond {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  opacity: 0.6;
+}
+
+.footer-wordmark {
+  font-family: 'Cormorant', serif;
+  font-weight: 300;
+  font-size: 44px;
+  color: rgba(255,255,255,0.12);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.footer-cta-label {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.footer-phone {
+  font-family: 'Cormorant', serif;
+  font-size: 32px;
+  color: #fff;
+  letter-spacing: 3px;
+  margin-bottom: 32px;
+}
+
+.footer-meta {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.2);
+  line-height: 2.2;
+}
+.footer-meta strong {
+  color: rgba(255,255,255,0.35);
+  font-weight: 400;
+}
+.footer-allergens {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 10px;
+  color: rgba(255,255,255,0.15);
+  line-height: 2;
+  letter-spacing: 0.5px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">
+      <div class="cover-eyebrow-line"></div>
+      <span class="cover-eyebrow-text">Fine Dining &amp; Bar</span>
+      <div class="cover-eyebrow-line"></div>
+    </div>
+    <h1 class="cover-name">Court<em>yard</em></h1>
+    <div class="cover-rule">
+      <div class="cover-rule-line"></div>
+      <div class="cover-rule-diamond"></div>
+      <div class="cover-rule-line" style="background:linear-gradient(90deg,var(--gold),transparent)"></div>
+    </div>
+    <p class="cover-tagline">Restaurant &amp; Bar</p>
+  </div>
+  <div class="cover-scroll">
+    <span class="cover-scroll-text">Scroll</span>
+    <div class="cover-scroll-line"></div>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-scroll">
+    <div class="nav-list">
+      <a href="#breakfast">Breakfast</a>
+      <a href="#indian">Indian</a>
+      <a href="#appetizers">Appetizers</a>
+      <a href="#tandoor">Tandoor</a>
+      <a href="#chinese">Chinese</a>
+      <a href="#breads">Breads</a>
+      <a href="#soups">Soups &amp; Salads</a>
+      <a href="#continental">Pizza &amp; Pasta</a>
+      <a href="#desserts">Desserts</a>
+      <a href="#beverages">Beverages</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ LEGEND ══ -->
+<div class="legend-bar">
+  <div class="legend-item">
+    <div class="legend-mark veg"></div>
+    Vegetarian
+  </div>
+  <div class="legend-item">
+    <div class="legend-mark nonveg"></div>
+    Non-Vegetarian
+  </div>
+</div>
+
+<!-- ══ PAGE ══ -->
+<div class="page">
+
+  <!-- BREAKFAST -->
+  <section class="section" id="breakfast">
+    <div class="section-head">
+      <div class="section-number">01</div>
+      <div class="section-label">Morning Service</div>
+      <h2 class="section-title">Breakfast</h2>
+      <div class="section-hours">07:30 hrs — 10:30 hrs</div>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+
+    <div class="items">
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Exotic Fresh Fruit Platter</div><div class="item-desc">Assorted seasonal fresh fruit cuts</div></div><div class="item-price">249</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Selection of Fresh Fruit Juice</div><div class="item-desc">Orange, sweet lime, pineapple, water melon</div></div><div class="item-price">249</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Cereals</div><div class="item-desc">Corn flakes, all bran, wheat flakes, muesli, oat meal, or chocos — served with hot or cold milk</div></div><div class="item-price">249</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Baker's Basket <span class="variant">Choose Any Three</span></div><div class="item-desc">Croissants, Danish pastry, muffins, brioche, doughnuts, whole wheat or white bread</div></div><div class="item-price">249</div></div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-label"><div class="subsection-title">Indian Breakfast</div></div>
+      <div class="items">
+        <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Masala Dosa</div><div class="item-desc">Rice and lentil crepes filled with curried potatoes, served with sambhar and three varieties of chutney</div></div><div class="item-price">249</div></div>
+        <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Idli</div><div class="item-desc">Steamed fluffy rice and lentil cakes served with sambhar and three varieties of chutney</div></div><div class="item-price">249</div></div>
+        <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Medu Vada</div><div class="item-desc">A crisp lentil doughnut served with coconut chutney and sambhar</div></div><div class="item-price">249</div></div>
+        <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Poori Bhaji</div><div class="item-desc">Spicy North Indian potato preparation served with fluffed fried Indian bread</div></div><div class="item-price">249</div></div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-label"><div class="subsection-title">Eggs to Order</div></div>
+      <div class="items">
+        <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Poached Eggs</div></div><div class="item-price">299</div></div>
+        <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Boiled Eggs</div><div class="item-desc">Hard boiled or soft boiled</div></div><div class="item-price">299</div></div>
+        <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Omelette</div><div class="item-desc">Choice of fillings — cheese, tomato, or mushroom</div></div><div class="item-price">299</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-motif"><span></span><span></span><span></span></div><div class="section-divider-line"></div></div>
+
+  <!-- INDIAN CUISINE -->
+  <section class="section" id="indian">
+    <div class="section-head">
+      <div class="section-number">02</div>
+      <div class="section-label">Heritage Flavours</div>
+      <h2 class="section-title">Indian Cuisine</h2>
+      <div class="section-hours">11:00 hrs — 23:00 hrs</div>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Paneer Tawa Masala</div><div class="item-desc">Soft paneer cubes cooked on a hot tawa with onions, tomatoes, and aromatic spices</div></div><div class="item-price">499</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Paneer Tikka Masala</div><div class="item-desc">Grilled paneer tikka simmered in a rich, creamy tomato-based gravy</div></div><div class="item-price">499</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Paneer Lababdar</div><div class="item-desc">Soft paneer cubes in a rich, creamy tomato-based gravy with aromatic spices</div></div><div class="item-price">499</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Veg Kadai</div><div class="item-desc">Mixed vegetables cooked in a spicy tomato gravy with freshly ground kadai spices</div></div><div class="item-price">449</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Veg Kolhapuri</div><div class="item-desc">A spicy Maharashtrian-style curry of mixed vegetables cooked with bold Kolhapuri masala</div></div><div class="item-price">599</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Veg Jodhpuri</div><div class="item-desc">A flavorful Rajasthani-style mixed vegetable curry cooked with aromatic spices and rich gravy</div></div><div class="item-price">449</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Aloo Jeera</div><div class="item-desc">Potatoes sautéed with cumin seeds and mild spices for a simple, aromatic dish</div></div><div class="item-price">349</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Dal Makhani</div><div class="item-desc">Slow-cooked black lentils in a creamy, buttery blend of Indian spices</div></div><div class="item-price">399</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Dal Tadka</div><div class="item-desc">Yellow lentils simmered to perfection, finished with a sizzling tempering of garlic, cumin, and chili</div></div><div class="item-price">349</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Dal Fry</div><div class="item-desc">Soft cooked lentils tossed in a spiced onion-tomato gravy for a flavorful punch</div></div><div class="item-price">349</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Mutton Curry</div><div class="item-desc">Tender mutton pieces simmered in a rich, aromatic blend of spices and gravy</div></div><div class="item-price">649</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Mutton Masala</div><div class="item-desc">Tender mutton cooked in a bold, spiced masala gravy bursting with flavor</div></div><div class="item-price">649</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Pav Bhaji</div><div class="item-desc">Buttered, toasted buns served with a spicy mashed vegetable medley straight from Mumbai streets</div></div><div class="item-price">399</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Kheem Pav</div><div class="item-desc">Spiced minced meat curry served piping hot with soft, buttered buns</div></div><div class="item-price">499</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Dal Kichidi</div><div class="item-desc">Comforting blend of lentils and rice, gently spiced for a wholesome, soul-warming meal</div></div><div class="item-price">399</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Veg Biryani</div><div class="item-desc">Fragrant basmati rice layered with colorful vegetables and aromatic spices, cooked to perfection</div></div><div class="item-price">499</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Chicken Biryani</div><div class="item-desc">Juicy chicken layered with fragrant basmati rice, slow-cooked with rich spices and herbs</div></div><div class="item-price">599</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Steamed Rice</div><div class="item-desc">Fluffy, perfectly cooked plain rice — the perfect base for any curry or gravy</div></div><div class="item-price">295</div></div>
+    </div>
+  </section>
+
+  <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-motif"><span></span><span></span><span></span></div><div class="section-divider-line"></div></div>
+
+  <!-- APPETIZERS -->
+  <section class="section" id="appetizers">
+    <div class="section-head">
+      <div class="section-number">03</div>
+      <div class="section-label">To Begin</div>
+      <h2 class="section-title">Appetizers</h2>
+      <div class="section-hours">11:00 hrs — 23:00 hrs</div>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Cheesy Herb Mushrooms</div><div class="item-desc">A classic Mumbai-style preparation layered with spiced vegetables, chutney, and buttered toasted bread</div></div><div class="item-price">399</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Fish Fingers</div><div class="item-desc">Crispy golden fish fillets coated in breadcrumbs and deep-fried, served as a crunchy bite-sized delight</div></div><div class="item-price">499</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Barbeque Chicken</div><div class="item-desc">Tender chicken glazed with smoky barbecue sauce and grilled to perfection</div></div><div class="item-price">499</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Chicken Satay</div><div class="item-desc">Grilled skewers of marinated chicken served with a rich and flavorful peanut sauce</div></div><div class="item-price">499</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Prawns Cumin Barbeque</div><div class="item-desc">Juicy prawns marinated with cumin and spices, grilled for a smoky, aromatic flavor</div></div><div class="item-price">599</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Paneer Satay</div><div class="item-desc">Grilled paneer skewers marinated in aromatic spices, served with a flavorful peanut sauce</div></div><div class="item-price">449</div></div>
+    </div>
+  </section>
+
+  <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-motif"><span></span><span></span><span></span></div><div class="section-divider-line"></div></div>
+
+  <!-- FROM TANDOOR -->
+  <section class="section" id="tandoor">
+    <div class="section-head">
+      <div class="section-number">04</div>
+      <div class="section-label">Clay Oven Specialties</div>
+      <h2 class="section-title">From Tandoor</h2>
+      <div class="section-hours">11:00 hrs — 23:00 hrs</div>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Paneer Tikka <span class="variant">Lal Mirch / Hari Mirch / Malai</span></div><div class="item-desc">Soft paneer cubes marinated in spiced yogurt and grilled in a tandoor until smoky and flavorful</div></div><div class="item-price">449</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Bhutte Palak ke Seekh</div><div class="item-desc">Flavorful skewers of sweet corn and spinach, seasoned with aromatic Indian spices and grilled to perfection</div></div><div class="item-price">399</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Tandoori Soya Chaap</div><div class="item-desc">Juicy soya chaap marinated in spiced yogurt and roasted in a tandoor for a smoky flavor</div></div><div class="item-price">399</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Tandoori Suran</div><div class="item-desc">Spiced elephant foot yam marinated and roasted in the tandoor for a smoky, flavorful bite</div></div><div class="item-price">399</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Malai Broccoli</div><div class="item-desc">Tender broccoli florets marinated in a creamy malai sauce and grilled for a rich, smoky flavor</div></div><div class="item-price">499</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Tandoori Mushroom</div><div class="item-desc">Juicy mushrooms marinated in aromatic spices and roasted in the tandoor for a smoky flavor</div></div><div class="item-price">449</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Bharvan Aloo</div><div class="item-desc">Baby potatoes stuffed with spiced filling, roasted until golden and flavorful</div></div><div class="item-price">399</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Chicken Tikka <span class="variant">Lal Mirch / Hari Mirch / Malai</span></div><div class="item-desc">Succulent chicken pieces marinated in spiced yogurt and grilled in a tandoor for a smoky, flavorful taste</div></div><div class="item-price">499</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Fish Tikka <span class="variant">Lal Mirch / Hari Mirch / Malai</span></div><div class="item-desc">Tender fish cubes marinated in aromatic spices and grilled in a tandoor for a smoky flavor</div></div><div class="item-price">499</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Ghosh Seekh Kebab</div><div class="item-desc">Minced mutton blended with aromatic spices, shaped on skewers, and grilled in the tandoor</div></div><div class="item-price">499</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Tandoori Chicken <span class="variant">Half</span></div><div class="item-desc">Chicken marinated in spiced yogurt and roasted in a traditional tandoor for a smoky, juicy flavor</div></div><div class="item-price">549</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Tandoori Zinga</div><div class="item-desc">Juicy prawns marinated in aromatic spices and roasted in the tandoor for a smoky, flavorful taste</div></div><div class="item-price">599</div></div>
+    </div>
+  </section>
+
+  <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-motif"><span></span><span></span><span></span></div><div class="section-divider-line"></div></div>
+
+  <!-- CHINESE -->
+  <section class="section" id="chinese">
+    <div class="section-head">
+      <div class="section-number">05</div>
+      <div class="section-label">Indo-Chinese</div>
+      <h2 class="section-title">Chinese</h2>
+      <div class="section-hours">11:00 hrs — 23:00 hrs</div>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Veg Manchurian Gravy</div><div class="item-desc">Crispy vegetable dumplings tossed in a flavorful Indo-Chinese sauce with garlic, ginger, and soy</div></div><div class="item-price">399</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Paneer Chilli Gravy</div><div class="item-desc">Crispy paneer tossed with bell peppers and onions in a spicy Indo-Chinese sauce</div></div><div class="item-price">449</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Chicken Chilli Gravy</div><div class="item-desc">Crispy chicken tossed with bell peppers and onions in a spicy Indo-Chinese sauce</div></div><div class="item-price">499</div></div>
+    </div>
+  </section>
+
+  <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-motif"><span></span><span></span><span></span></div><div class="section-divider-line"></div></div>
+
+  <!-- BREADS -->
+  <section class="section" id="breads">
+    <div class="section-head">
+      <div class="section-number">06</div>
+      <div class="section-label">From the Oven</div>
+      <h2 class="section-title">Breads</h2>
+      <div class="section-hours">11:00 hrs — 23:00 hrs</div>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Naan, Roti, Laccha Paratha</div><div class="item-desc">Freshly baked Indian breads from the tandoor — soft, flaky, and perfect with rich curries</div></div><div class="item-price">99</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Kulcha <span class="variant">Aloo / Onion / Cheese</span></div><div class="item-desc">Soft tandoor-baked bread stuffed with flavorful fillings of potato, onion, or cheese</div></div><div class="item-price">149</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Tandoori Aloo Paratha</div><div class="item-desc">Whole wheat flatbread stuffed with spiced potatoes, roasted in the tandoor for a smoky flavor</div></div><div class="item-price">249</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Chicken Shawarma</div><div class="item-desc">Juicy marinated chicken wrapped with fresh vegetables and creamy sauce in soft flatbread</div></div><div class="item-price">499</div></div>
+    </div>
+  </section>
+
+  <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-motif"><span></span><span></span><span></span></div><div class="section-divider-line"></div></div>
+
+  <!-- SOUPS & SALADS -->
+  <section class="section" id="soups">
+    <div class="section-head">
+      <div class="section-number">07</div>
+      <div class="section-label">Light &amp; Fresh</div>
+      <h2 class="section-title">Soups &amp; Salads</h2>
+      <div class="section-hours">11:00 hrs — 23:00 hrs</div>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Roasted Tomato Basil Soup</div><div class="item-desc">Slow-roasted tomatoes blended with fresh basil to create a rich and comforting soup</div></div><div class="item-price">249</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Asian Clear Soup</div><div class="item-desc">A light and aromatic broth with fresh vegetables and delicate Asian flavors</div></div><div class="item-price">299 <span class="slash">/</span> 349</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Sweet Corn Soup</div><div class="item-desc">A warm and comforting soup made with sweet corn kernels in a light, flavorful broth</div></div><div class="item-price">299 <span class="slash">/</span> 349</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Courtyard Signature Salad Bowl</div><div class="item-desc">Fresh and vibrant mix of garden vegetables, signature dressings, and wholesome toppings</div></div><div class="item-price">349 <span class="slash">/</span> 399</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Greek Salad</div><div class="item-desc">A refreshing mix of crisp vegetables, olives, and feta cheese tossed in a light olive oil dressing</div></div><div class="item-price">349</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Caesar Salad</div><div class="item-desc">Crisp lettuce tossed with creamy Caesar dressing, crunchy croutons, and parmesan cheese</div></div><div class="item-price">349 <span class="slash">/</span> 399</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Green Salad</div><div class="item-desc">A light and refreshing mix of fresh garden greens and seasonal vegetables</div></div><div class="item-price">249</div></div>
+    </div>
+  </section>
+
+  <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-motif"><span></span><span></span><span></span></div><div class="section-divider-line"></div></div>
+
+  <!-- PIZZA / PASTA / SANDWICHES -->
+  <section class="section" id="continental">
+    <div class="section-head">
+      <div class="section-number">08</div>
+      <div class="section-label">World Flavours</div>
+      <h2 class="section-title">Sandwiches, Pizza &amp; Pasta</h2>
+      <div class="section-hours">11:00 hrs — 23:00 hrs</div>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="subsection" style="margin-top:8px;">
+      <div class="subsection-label"><div class="subsection-title">Sandwiches</div></div>
+      <div class="items">
+        <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Bombay Veg Sandwich</div><div class="item-desc">A classic Mumbai-style sandwich layered with spiced vegetables, chutney, and buttered toasted bread</div></div><div class="item-price">399</div></div>
+        <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Veg Grilled Sandwich</div><div class="item-desc">Crispy grilled bread filled with seasoned vegetables and melted cheese</div></div><div class="item-price">399</div></div>
+        <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">The Courtyard Club</div><div class="item-desc">A hearty layered sandwich with fresh vegetables, cheese, and savory fillings in toasted bread</div></div><div class="item-price">399 <span class="slash">/</span> 449</div></div>
+        <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Plain Sandwich</div><div class="item-desc">A simple and classic sandwich made with fresh bread and light, flavorful fillings</div></div><div class="item-price">399</div></div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label"><div class="subsection-title">Pizza</div></div>
+      <div class="items">
+        <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Margherita Pizza</div><div class="item-desc">Classic pizza topped with tomato sauce, fresh mozzarella, and fragrant basil on a crisp crust</div></div><div class="item-price">349</div></div>
+        <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Chicken Tikka Pizza</div><div class="item-desc">A flavorful pizza topped with spiced chicken tikka, melted cheese, and tangy tomato sauce</div></div><div class="item-price">499</div></div>
+        <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Make Your Own Pizza</div><div class="item-desc">Customize your pizza with your choice of fresh toppings, sauces, and cheese</div></div><div class="item-price">499</div></div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label"><div class="subsection-title">Pasta</div></div>
+      <div class="items">
+        <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Pasta <span class="variant">Penne / Fusilli</span></div><div class="item-desc">Tomato sauce or creamy cheese sauce</div></div><div class="item-price">349 <span class="slash">/</span> 499</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-motif"><span></span><span></span><span></span></div><div class="section-divider-line"></div></div>
+
+  <!-- DESSERTS -->
+  <section class="section" id="desserts">
+    <div class="section-head">
+      <div class="section-number">09</div>
+      <div class="section-label">Sweet Endings</div>
+      <h2 class="section-title">Desserts</h2>
+      <div class="section-hours">11:00 hrs — 23:00 hrs</div>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Warm Chocolate Brownie</div><div class="item-desc">Rich chocolate brownie served warm for chocolate lovers</div></div><div class="item-price">349</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Blueberry Cheese Cake</div><div class="item-desc">Creamy cheesecake topped with a burst of fresh blueberry goodness</div></div><div class="item-price">349</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Red Velvet</div><div class="item-desc">Soft, velvety cake with a hint of cocoa, topped with cream cheese frosting</div></div><div class="item-price">349</div></div>
+      <div class="item"><div class="item-dot nonveg"></div><div class="item-body"><div class="item-name">Cream Caramel</div><div class="item-desc">Silky caramel custard with a delicate caramel glaze</div></div><div class="item-price">249</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Gulab Jamun</div><div class="item-desc">Soft, syrupy milk dumplings soaked in fragrant rose syrup</div></div><div class="item-price">249</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Rasgulla</div><div class="item-desc">Spongy, melt-in-mouth cheese balls in light sugar syrup</div></div><div class="item-price">249</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Fresh Cut Fruits</div><div class="item-desc">A vibrant assortment of seasonal fruits, refreshing and natural</div></div><div class="item-price">249</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Choice of Ice Cream</div><div class="item-desc">Creamy chilled ice cream in your favorite flavor</div></div><div class="item-price">249</div></div>
+    </div>
+  </section>
+
+  <div class="section-divider"><div class="section-divider-line"></div><div class="section-divider-motif"><span></span><span></span><span></span></div><div class="section-divider-line"></div></div>
+
+  <!-- BEVERAGES -->
+  <section class="section" id="beverages">
+    <div class="section-head">
+      <div class="section-number">10</div>
+      <div class="section-label">Liquid Pleasures</div>
+      <h2 class="section-title">Beverages</h2>
+      <div class="section-hours">11:00 hrs — 23:00 hrs</div>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Seasonal Fresh Fruit Juice</div></div><div class="item-price">249</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Milk Shakes</div><div class="item-desc">Vanilla, strawberry, chocolate, banana</div></div><div class="item-price">249</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Lassi</div><div class="item-desc">Sweet, salted, or masala</div></div><div class="item-price">249</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Selection of Tea</div><div class="item-desc">Assam, Darjeeling, green, or masala</div></div><div class="item-price">199</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Selection of Coffee</div></div><div class="item-price">199</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Energy Drink</div></div><div class="item-price">349</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Iced Tea</div></div><div class="item-price">199</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Cold Coffee</div></div><div class="item-price">249</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Fresh Lime Water / Soda</div></div><div class="item-price">199</div></div>
+      <div class="item"><div class="item-dot veg"></div><div class="item-body"><div class="item-name">Packaged Drinking Water</div></div><div class="item-price">99</div></div>
+    </div>
+  </section>
+
+</div><!-- /page -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-rule">
+    <div class="footer-rule-line"></div>
+    <div class="footer-rule-diamond"></div>
+    <div class="footer-rule-line"></div>
+  </div>
+  <div class="footer-wordmark">Courtyard</div>
+  <div class="footer-cta-label">To place an order</div>
+  <div class="footer-phone">7774026126</div>
+  <div class="footer-meta">
+    <strong>All prices are in Indian Rupees</strong><br>
+    Government taxes applicable as above rates
+  </div>
+  <div class="footer-allergens">
+    Allergen Indicators — Gluten · Soya · Nuts · Sulphites · Dairy · Eggs · Fish · Crustaceans (Shell Fish)
+  </div>
+</footer>
+
+<script>
+// ── Intersection Observer for section fade-in ──
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.08 });
+sections.forEach(s => observer.observe(s));
+
+// ── Active nav link on scroll ──
+const navLinks = document.querySelectorAll('.nav-list a');
+const sectionEls = document.querySelectorAll('section[id]');
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector(`.nav-list a[href="#${e.target.id}"]`);
+      if (active) {
+        active.classList.add('active');
+        active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }
+  });
+}, { threshold: 0.3 });
+sectionEls.forEach(s => navObserver.observe(s));
+</script>
+</body>
+</html>
